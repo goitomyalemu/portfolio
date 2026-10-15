@@ -1,13 +1,3 @@
-import heroImg from '../assets/images/hero_engineering_lab_1792066341417.jpg';
-import solarImg from '../assets/images/solar_charging_station_1792067474885.jpg';
-import healthcareImg from '../assets/images/edge_ai_healthcare_1792066342058.jpg';
-
-export const ASSET_IMAGES = {
-  heroLab: heroImg,
-  solarStation: solarImg,
-  healthcareAi: healthcareImg,
-};
-
 export interface Publication {
   id: string;
   title: string;
@@ -305,7 +295,7 @@ export const PROJECTS: Project[] = [
       "Integrated NPU-accelerated quantized models to achieve sub-second clinical inference on low-power devices."
     ],
     tags: ["AMD Ryzen AI", "NPU Acceleration", "Edge AI", "Rural Healthcare", "Offline Diagnostics"],
-    image: healthcareImg
+    image: `${import.meta.env.BASE_URL}images/edge_ai_healthcare_1792066342058.jpg`
   },
   {
     id: "solar-idp-charging",
@@ -321,7 +311,7 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Solar PV", "Battery Systems", "IDP Relief", "Off-Grid Energy", "Community Impact"],
     url: "https://talloiresnetwork.tufts.edu/blog/news/2024/10/08/solar-powered-charging-stations-for-internally-displaced-persons-idps-in-tigray/",
-    image: solarImg
+    image: `${import.meta.env.BASE_URL}images/solar_charging_station_1792067474885.jpg`
   },
   {
     id: "mu-governance",
@@ -389,7 +379,7 @@ export const PROJECTS: Project[] = [
       "Targeted for high-speed FPGA synthesis with strict clock timing and bitstream generation."
     ],
     tags: ["Software-Defined Radio", "Simulink", "Xilinx DSP", "FPGA Synthesis", "Signal Processing"],
-    image: heroImg
+    image: `${import.meta.env.BASE_URL}images/hero_engineering_lab_1792066341417.jpg`
   }
 ];
 
