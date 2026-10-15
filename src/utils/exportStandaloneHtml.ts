@@ -113,8 +113,11 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--muted);font-s
       <li><a href="#experience">Experience</a></li>
       <li><a href="#geometratech">GeometraTech</a></li>
       <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#theses">Supervisions</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#networks">Networks</a></li>
+      <li><a href="#certs">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
@@ -244,6 +247,33 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--muted);font-s
     </div>
   </section>
 
+  <!-- FEATURED PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects &amp; Initiatives</h2>
+    <p class="section-sub">From global AI developer contest finalist tools to community off-grid solar microgrids.</p>
+    <div class="grid-2">
+      ${PROJECTS.map(p => `
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <span style="font-weight:700;color:var(--accent);font-size:0.82rem">${p.period}</span>
+            <span style="font-size:0.75rem;font-weight:600;color:var(--amber)">${p.role}</span>
+          </div>
+          <h3 style="font-size:1.05rem;font-weight:700;margin:0 0 8px">${p.title}</h3>
+          <p style="font-size:0.85rem;color:var(--muted);margin:0 0 10px">${p.summary}</p>
+          <ul style="margin:0 0 12px;padding-left:16px;font-size:0.82rem;color:var(--ink)">
+            ${p.highlights.map(hl => `<li>${hl}</li>`).join('')}
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid var(--line)">
+            <div>
+              ${p.tags.slice(0, 3).map(tag => `<span class="tag">#${tag}</span>`).join('')}
+            </div>
+            ${p.url ? `<a class="btn" style="padding:3px 10px;font-size:0.78rem" href="${p.url}" target="_blank" rel="noreferrer">Project Link ↗</a>` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  </section>
+
   <!-- THESIS SUPERVISIONS -->
   <section id="theses">
     <h2 class="section-title">BSc Thesis Supervision (2017 – 2026)</h2>
@@ -265,10 +295,10 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--muted);font-s
     </div>
   </section>
 
-  <!-- SKILLS & CERTIFICATIONS -->
+  <!-- SKILLS & TECHNICAL EXPERTISE -->
   <section id="skills">
     <h2 class="section-title">Skills &amp; Technical Expertise</h2>
-    <p class="section-sub">Specialized toolchains, programming languages, and industry accreditations.</p>
+    <p class="section-sub">Specialized toolchains, programming languages, and engineering competencies.</p>
     <div class="grid-2">
       ${TECHNICAL_SKILLS.map(cat => `
         <div class="card">
@@ -279,6 +309,35 @@ footer{padding:48px 0;border-top:1px solid var(--line);color:var(--muted);font-s
               <span style="font-size:0.82rem;color:var(--muted)">${it.detail}</span>
             </div>
           `).join('')}
+        </div>
+      `).join('')}
+    </div>
+  </section>
+
+  <!-- ADVISORY & COMMUNITY NETWORKS -->
+  <section id="networks">
+    <h2 class="section-title">Advisory, Enterprise Training &amp; Networks</h2>
+    <p class="section-sub">Mentorship with UNCTAD-EMPRETEC, regional financial technology, and leadership in professional associations.</p>
+    <div class="grid-2">
+      ${COMMUNITY_AND_NETWORKS.map(net => `
+        <div class="card">
+          <h3 style="font-size:0.98rem;font-weight:700;margin:0 0 4px">${net.name}</h3>
+          <div style="color:var(--accent);font-size:0.82rem;font-weight:600;margin-bottom:6px">${net.role}</div>
+          <p style="font-size:0.85rem;color:var(--muted);margin:0">${net.detail}</p>
+        </div>
+      `).join('')}
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <h2 class="section-title">Verified Certifications &amp; Accreditations</h2>
+    <p class="section-sub">Machine learning, IoT protocols, cybersecurity, and intellectual property credentials.</p>
+    <div class="grid-2">
+      ${CERTIFICATIONS.map(cert => `
+        <div class="card" style="padding:16px">
+          <h3 style="font-size:0.92rem;font-weight:700;margin:0 0 4px">${cert.title}</h3>
+          <div style="font-size:0.8rem;color:var(--muted)">${cert.issuer} · <b style="color:var(--accent)">${cert.year}</b></div>
         </div>
       `).join('')}
     </div>

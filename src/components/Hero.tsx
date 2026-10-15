@@ -11,7 +11,7 @@ import {
   Twitter,
   Building2
 } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { PERSONAL_INFO, ASSET_IMAGES } from '../data/portfolioData';
 import { HardwareTelemetry } from './HardwareTelemetry';
 
 interface HeroProps {
@@ -156,7 +156,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenHostingGuide, onOpenPrintCv })
             <div className="rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-sm relative group">
               <div className="aspect-16/9 relative overflow-hidden">
                 <img 
-                  src="/src/assets/images/hero_engineering_lab_1792066341417.jpg"
+                  src={ASSET_IMAGES.heroLab}
                   alt="Electronics Engineering Workbench with FPGA Zedboard, Oscilloscope, Multimeter, and Microcontroller Testbench"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"

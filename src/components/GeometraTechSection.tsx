@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sun, BatteryCharging, Wrench, ShieldCheck, Cpu, Wifi, ExternalLink } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { PERSONAL_INFO, ASSET_IMAGES } from '../data/portfolioData';
 
 export const GeometraTechSection: React.FC = () => {
   return (
@@ -41,7 +41,7 @@ export const GeometraTechSection: React.FC = () => {
             <div className="rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-slate-100 dark:bg-slate-900 shadow-sm relative group">
               <div className="aspect-4/3 relative">
                 <img 
-                  src="/src/assets/images/solar_charging_station_1792067474885.jpg"
+                  src={ASSET_IMAGES.solarStation}
                   alt="Community solar-powered battery charging kiosk in rural Ethiopia with high-efficiency photovoltaic panels"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
