@@ -19,6 +19,24 @@ interface PrintCvModalProps {
 }
 
 export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) => {
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -46,10 +64,10 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="px-3.5 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-xs transition-colors"
             >
               <Printer className="w-3.5 h-3.5" />
-              Print / Save PDF
+              <span>Print / Save PDF</span>
             </button>
             <button
               onClick={onClose}
@@ -210,7 +228,7 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
                 <div key={idx} className="text-slate-800">
                   <strong>{ref.name}</strong><br />
                   {ref.title}, {ref.organization}<br />
-                  <span className="text-[11px] font-mono">{ref.email}</span>
+                  <span className="text-[11px] text-slate-600 italic">{ref.note}</span>
                 </div>
               ))}
             </div>

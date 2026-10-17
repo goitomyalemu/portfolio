@@ -1,5 +1,5 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Building2, Calendar } from 'lucide-react';
+import { Briefcase, GraduationCap, Building2 } from 'lucide-react';
 import { WORK_EXPERIENCE, EDUCATION } from '../data/portfolioData';
 
 export const ExperienceTimeline: React.FC = () => {
@@ -9,13 +9,13 @@ export const ExperienceTimeline: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-10">
-          <div className="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400 font-mono mb-1">
-            Career &amp; Academic Background
+          <div className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 font-mono mb-1">
+            CAREER &amp; ACADEMIC BACKGROUND
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
             Work Experience &amp; Leadership
           </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-2xl leading-relaxed">
             14+ years in university administration, digital governance transformation, 
             and engineering pedagogy across Ethiopia's top higher education institutions.
           </p>
@@ -35,27 +35,31 @@ export const ExperienceTimeline: React.FC = () => {
                       : 'border-slate-400 dark:border-slate-600'
                   }`} />
 
-                  <div className="p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-xs group-hover:border-teal-500/40 transition-colors">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                      <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                  <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs group-hover:border-teal-600/50 transition-colors">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <h3 className="font-serif text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">
                         {exp.role}
                       </h3>
-                      <span className="text-xs font-mono font-semibold text-teal-700 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/60 px-2.5 py-0.5 rounded-md border border-teal-200/60 dark:border-teal-900/60">
+                      <span className={`text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
+                        exp.current
+                          ? 'text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/60 border-teal-200 dark:border-teal-900/60 font-bold'
+                          : 'text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700'
+                      }`}>
                         {exp.period}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3">
-                      <Building2 className="w-3.5 h-3.5 text-slate-400" />
-                      <span className="font-medium text-slate-700 dark:text-slate-300">{exp.organization}</span>
+                    <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3.5 font-medium">
+                      <Building2 className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">{exp.organization}</span>
                       <span>·</span>
                       <span>{exp.location}</span>
                     </div>
 
-                    <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                    <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                       {exp.description.map((item, dIdx) => (
-                        <li key={dIdx} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 mt-1.5 shrink-0" />
+                        <li key={dIdx} className="flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-teal-600 mt-1.5 shrink-0" />
                           <span className="leading-relaxed">{item}</span>
                         </li>
                       ))}
@@ -68,33 +72,33 @@ export const ExperienceTimeline: React.FC = () => {
 
           {/* Right Column: Formal Degrees & Education */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
-              <div className="flex items-center gap-2 mb-4">
+            <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+              <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-slate-100 dark:border-slate-800">
                 <GraduationCap className="w-5 h-5 text-teal-600 dark:text-teal-400" />
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white font-mono">
+                <h3 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
                   Degrees &amp; Education
                 </h3>
               </div>
 
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {EDUCATION.map((edu, idx) => (
-                  <div key={idx} className="pb-4 border-b border-slate-200 dark:border-slate-800 last:border-0 last:pb-0">
-                    <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                  <div key={idx} className="pb-5 border-b border-slate-100 dark:border-slate-800 last:border-0 last:pb-0">
+                    <h4 className="font-serif text-sm font-bold text-slate-900 dark:text-slate-100">
                       {edu.degree}
                     </h4>
-                    <p className="text-xs font-medium text-teal-700 dark:text-teal-400 mt-0.5">
+                    <p className="text-xs font-semibold text-teal-700 dark:text-teal-400 mt-0.5">
                       {edu.institution}
                     </p>
                     <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">
                       {edu.period} · {edu.location}
                     </p>
                     {edu.thesis && (
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 italic leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 italic leading-relaxed bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-200/60 dark:border-slate-800">
                         Thesis: "{edu.thesis}"
                       </p>
                     )}
                     {edu.highlights && (
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
                         {edu.highlights}
                       </p>
                     )}
@@ -103,10 +107,12 @@ export const ExperienceTimeline: React.FC = () => {
               </div>
             </div>
 
-            {/* Quick summary box */}
-            <div className="p-4 rounded-xl border border-teal-200/80 dark:border-teal-900/60 bg-teal-50/50 dark:bg-teal-950/20 text-xs text-slate-700 dark:text-slate-300">
-              <strong className="block text-slate-900 dark:text-white mb-1 font-semibold">Institutional Digital Governance</strong>
-              <p className="leading-relaxed text-[11px]">
+            {/* Institutional Digital Governance box */}
+            <div className="p-5 rounded-2xl border border-teal-200 dark:border-teal-900/50 bg-teal-50/50 dark:bg-teal-950/20 text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+              <strong className="block font-serif text-sm text-slate-900 dark:text-slate-100 font-bold">
+                Institutional Digital Governance
+              </strong>
+              <p className="leading-relaxed text-[11px] text-slate-600 dark:text-slate-300">
                 In his current role as Director of Information Management at Mekelle University, Goitom leads the consolidation of disparate college data into automated validation platforms (MU-DataLink and MU-KPI), connecting with national Higher Education Management Information Systems (HEMIS).
               </p>
             </div>

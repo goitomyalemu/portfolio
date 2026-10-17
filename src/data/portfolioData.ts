@@ -1,3 +1,14 @@
+// All image assets stored in public/images/ referenced using Vite's dynamic base path
+export const ASSET_IMAGES = {
+  heroLab: `${import.meta.env.BASE_URL}images/hero_engineering_lab_1792066341417.jpg`,
+  solarStation: `${import.meta.env.BASE_URL}images/solar_charging_kiosk_1792242163533.jpg`,
+  healthcareAi: `${import.meta.env.BASE_URL}images/edge_ai_healthcare_1792066342058.jpg`,
+  edgeAi: `${import.meta.env.BASE_URL}images/edge_ai_healthcare_1792066342058.jpg`,
+  univetGraduationHero: `${import.meta.env.BASE_URL}images/univet_graduation_hero_1792143279190.jpg`,
+  univetCampusHall: `${import.meta.env.BASE_URL}images/univet_campus_hall_1792143296317.jpg`,
+  univetLabResearchers: `${import.meta.env.BASE_URL}images/univet_lab_researchers_1792143310504.jpg`,
+};
+
 export interface Publication {
   id: string;
   title: string;
@@ -70,10 +81,38 @@ My engineering background spans Reconfigurable Computing (FPGAs), Embedded Syste
 };
 
 export const IMPACT_METRICS = [
-  { value: "Off-Grid", label: "Community Solar Power", sublabel: "Decentralized charging hubs deployed across Tigray IDP camps" },
-  { value: "1,000+", label: "Students & Tech Upskilled", sublabel: "Via Gebeya-Safaricom & Mastercard Foundation SEED initiatives" },
-  { value: "200+", label: "Entrepreneurs Mentored", sublabel: "Certified UNCTAD-EMPRETEC & EBMS trainer with EDI Ethiopia" },
-  { value: "5,000+", label: "Community Beneficiaries", sublabel: "Impacted through humanitarian and Rotary Club Mekelle initiatives" }
+  { 
+    id: "solar-idp",
+    value: "5,000+", 
+    label: "IDP Solar Beneficiaries", 
+    sublabel: "Decentralized clean energy & phone charging hubs deployed across Tigray IDP camps",
+    tag: "Renewable Energy",
+    category: "solar"
+  },
+  { 
+    id: "amd-contest",
+    value: "Global Finalist", 
+    label: "AMD Pervasive AI 2024", 
+    sublabel: "Selected globally for developing an offline edge AI diagnostic triage assistant on Ryzen AI NPU",
+    tag: "Edge AI Innovation",
+    category: "ai"
+  },
+  { 
+    id: "upskilling",
+    value: "1,000+", 
+    label: "Students & Tech Upskilled", 
+    sublabel: "Trained in software engineering & AI via Gebeya-Safaricom & Mastercard Foundation SEED",
+    tag: "Capacity Building",
+    category: "education"
+  },
+  { 
+    id: "entrepreneurs",
+    value: "200+", 
+    label: "Entrepreneurs Mentored", 
+    sublabel: "Certified UNCTAD-EMPRETEC & EBMS trainer with Entrepreneurship Development Institute (EDI)",
+    tag: "Venture Leadership",
+    category: "mentorship"
+  }
 ];
 
 export const WORK_EXPERIENCE: Experience[] = [
@@ -295,7 +334,7 @@ export const PROJECTS: Project[] = [
       "Integrated NPU-accelerated quantized models to achieve sub-second clinical inference on low-power devices."
     ],
     tags: ["AMD Ryzen AI", "NPU Acceleration", "Edge AI", "Rural Healthcare", "Offline Diagnostics"],
-    image: `${import.meta.env.BASE_URL}images/edge_ai_healthcare_1792066342058.jpg`
+    image: ASSET_IMAGES.healthcareAi
   },
   {
     id: "solar-idp-charging",
@@ -311,7 +350,7 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Solar PV", "Battery Systems", "IDP Relief", "Off-Grid Energy", "Community Impact"],
     url: "https://talloiresnetwork.tufts.edu/blog/news/2024/10/08/solar-powered-charging-stations-for-internally-displaced-persons-idps-in-tigray/",
-    image: `${import.meta.env.BASE_URL}images/solar_charging_station_1792067474885.jpg`
+    image: ASSET_IMAGES.solarStation
   },
   {
     id: "mu-governance",
@@ -379,7 +418,7 @@ export const PROJECTS: Project[] = [
       "Targeted for high-speed FPGA synthesis with strict clock timing and bitstream generation."
     ],
     tags: ["Software-Defined Radio", "Simulink", "Xilinx DSP", "FPGA Synthesis", "Signal Processing"],
-    image: `${import.meta.env.BASE_URL}images/hero_engineering_lab_1792066341417.jpg`
+    image: ASSET_IMAGES.heroLab
   }
 ];
 
@@ -545,21 +584,18 @@ export const REFERENCES = [
     name: "Dr. Fana Hagos Berhane",
     title: "President",
     organization: "Mekelle University",
-    email: "fana.hagos@mu.edu.et",
-    phone: "+251 914 702 191"
+    note: "Contact details available on request"
   },
   {
     name: "Dr. Getachew Alemu",
     title: "Assistant Professor",
     organization: "AAiT, Addis Ababa University",
-    email: "getachew.alemu@aait.edu.et",
-    phone: "+251 967 288 909"
+    note: "Contact details available on request"
   },
   {
     name: "Dr. Leake Enquay Weldemariam",
     title: "Assistant Professor",
     organization: "Mekelle Institute of Technology (MIT), Mekelle University",
-    email: "leake.enquay@mu.edu.et",
-    phone: "+251 921 420 484"
+    note: "Contact details available on request"
   }
 ];

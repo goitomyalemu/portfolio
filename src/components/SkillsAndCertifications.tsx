@@ -1,12 +1,8 @@
 import React from 'react';
 import { 
-  Cpu, 
-  Layers, 
-  Award, 
   Users, 
-  CheckCircle2, 
-  Globe2, 
-  ShieldCheck 
+  Award,
+  Globe2
 } from 'lucide-react';
 import { 
   TECHNICAL_SKILLS, 
@@ -22,13 +18,13 @@ export const SkillsAndCertifications: React.FC = () => {
         {/* PART 1: TECHNICAL SKILLS */}
         <div>
           <div className="mb-8">
-            <div className="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400 font-mono mb-1">
-              Core Competencies
+            <div className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 font-mono mb-1">
+              CORE COMPETENCIES
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
               Hardware, AI &amp; Systems Engineering
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-2xl leading-relaxed">
               Specialized expertise in hardware-software co-design, FPGA digital architectures, and off-grid electronics.
             </p>
           </div>
@@ -37,12 +33,12 @@ export const SkillsAndCertifications: React.FC = () => {
             {TECHNICAL_SKILLS.map((skillGroup, idx) => (
               <div 
                 key={idx}
-                className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-4"
+                className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4 hover:border-teal-500/50 transition-colors"
               >
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-2">
+                <h3 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100 border-b border-slate-100 dark:border-slate-800 pb-2.5">
                   {skillGroup.category}
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-3.5">
                   {skillGroup.items.map((item, iIdx) => (
                     <div key={iIdx}>
                       <div className="text-xs font-bold text-teal-700 dark:text-teal-400">
@@ -59,36 +55,38 @@ export const SkillsAndCertifications: React.FC = () => {
           </div>
         </div>
 
-        {/* PART 2: ADVISORY, ENTERPRISE TRAINING & NETWORKS */}
-        <div>
+        {/* PART 2: OUTREACH & NETWORKS */}
+        <div id="outreach">
           <div className="mb-8">
-            <div className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 font-mono mb-1">
-              Outreach &amp; Capacity Building
+            <div className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 font-mono mb-1">
+              OUTREACH &amp; CAPACITY BUILDING
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
               Advisory, Enterprise Training &amp; Networks
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-2xl leading-relaxed">
               Mentoring hundreds of regional micro-entrepreneurs and collaborating with international development bodies.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {COMMUNITY_AND_NETWORKS.map((network, idx) => (
               <div 
                 key={idx}
-                className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 shadow-xs space-y-2"
+                className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-2.5 hover:border-teal-500/50 transition-colors"
               >
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0" />
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-lg bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300">
+                    <Users className="w-4 h-4 shrink-0" />
+                  </div>
+                  <h3 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">
                     {network.name}
                   </h3>
                 </div>
-                <div className="text-xs font-semibold text-teal-700 dark:text-teal-400">
+                <div className="text-xs font-semibold text-amber-700 dark:text-amber-400">
                   {network.role}
                 </div>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                   {network.detail}
                 </p>
               </div>
@@ -96,29 +94,29 @@ export const SkillsAndCertifications: React.FC = () => {
           </div>
         </div>
 
-        {/* PART 3: CERTIFICATIONS & LICENSES */}
+        {/* PART 3: VERIFIED CERTIFICATIONS & LICENSES */}
         <div>
           <div className="mb-8">
-            <div className="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400 font-mono mb-1">
-              Continuous Professional Development
+            <div className="text-xs font-bold uppercase tracking-wider text-teal-700 dark:text-teal-400 font-mono mb-1">
+              CONTINUOUS PROFESSIONAL ACCREDITATION
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
               Verified Certifications &amp; Accreditations
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-2xl leading-relaxed">
               Professional credentials in Machine Learning, IoT protocols, Cybersecurity, and Intellectual Property.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {CERTIFICATIONS.map((cert, idx) => (
               <div 
                 key={idx}
-                className="p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/70 flex items-start gap-3 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                className="p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-start gap-3.5 shadow-2xs hover:border-teal-500/50 transition-colors"
               >
                 <Award className="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-white leading-snug">
+                  <h4 className="font-serif text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
                     {cert.title}
                   </h4>
                   <div className="text-[11px] text-slate-500 dark:text-slate-400">

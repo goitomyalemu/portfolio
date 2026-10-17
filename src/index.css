@@ -1,31 +1,98 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: 'Bitter', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Crimson ramp (used as teal-*, the primary accent) */
+  --color-teal-50: #fcf1f3;
+  --color-teal-100: #f8dde2;
+  --color-teal-200: #f0bbc4;
+  --color-teal-300: #e58c9b;
+  --color-teal-400: #e0697c;
+  --color-teal-500: #c93a54;
+  --color-teal-600: #960b27;
+  --color-teal-700: #7b0920;
+  --color-teal-800: #5e0719;
+  --color-teal-900: #430512;
+  --color-teal-950: #2a030b;
+
+  /* Warm neutrals (used as slate-*) */
+  --color-slate-50: #f6f4ee;
+  --color-slate-100: #eeebe3;
+  --color-slate-200: #e4e0d6;
+  --color-slate-300: #cfcac0;
+  --color-slate-400: #a39e98;
+  --color-slate-500: #6e6a68;
+  --color-slate-600: #4c4c4c;
+  --color-slate-700: #3a3637;
+  --color-slate-800: #262122;
+  --color-slate-900: #171213;
+  --color-slate-950: #0c0809;
+
+  /* Muted gold (used as amber-*, for rare secondary highlights only) */
+  --color-amber-50: #faf5e8;
+  --color-amber-100: #f2e6c4;
+  --color-amber-200: #e6d195;
+  --color-amber-300: #d9bb68;
+  --color-amber-400: #cfa84a;
+  --color-amber-500: #b88a2c;
+  --color-amber-600: #976d1c;
+  --color-amber-700: #7a5616;
+  --color-amber-800: #5f4311;
+  --color-amber-900: #45310d;
+  --color-amber-950: #2a1e07;
+}
+
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-sans);
+    color: var(--color-slate-600);
+    background-color: var(--color-slate-50);
   }
-  
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-slate-900);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
   code, kbd, samp, pre {
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-family: var(--font-mono);
+  }
+
+  .dark body {
+    color: var(--color-slate-200);
+    background-color: var(--color-slate-950);
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: var(--color-slate-100);
   }
 }
 
-/* Subtle circuit grid texture */
+/* Page background circuit texture: radial-gradient dots in crimson at 7% opacity, 24px spacing */
 .circuit-pattern {
-  background-image: radial-gradient(rgba(100, 116, 139, 0.12) 1px, transparent 1px);
+  background-color: #f6f4ee;
+  background-image: radial-gradient(rgba(150, 11, 39, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .dark .circuit-pattern {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-color: #0c0809;
+  background-image: radial-gradient(rgba(224, 105, 124, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Print Styles for CV export */
+/* Print stylesheet */
 @media print {
   body {
     background: #ffffff !important;
-    color: #111827 !important;
+    color: #171213 !important;
   }
   .no-print {
     display: none !important;
@@ -38,6 +105,6 @@
   }
   a {
     text-decoration: none !important;
-    color: #111827 !important;
+    color: #171213 !important;
   }
 }

@@ -10,59 +10,50 @@ import { ThesisSupervisionSection } from './components/ThesisSupervisionSection'
 import { SkillsAndCertifications } from './components/SkillsAndCertifications';
 import { ReferencesAndContact } from './components/ReferencesAndContact';
 import { Footer } from './components/Footer';
-import { HostingGuideModal } from './components/HostingGuideModal';
 import { PrintCvModal } from './components/PrintCvModal';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    try {
+      if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem('theme');
+        if (saved) return saved === 'dark';
+      }
+    } catch {
+      // ignore
     }
-    return false;
+    return false; // Light theme is default
   });
 
-  const [hostingGuideOpen, setHostingGuideOpen] = useState(false);
   const [printCvOpen, setPrintCvOpen] = useState(false);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+    try {
+      if (darkMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    } catch {
+      // ignore
     }
   }, [darkMode]);
 
-  // Global keyboard shortcuts (Ctrl+K or Cmd+K or ? for hosting guide)
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        setHostingGuideOpen(prev => !prev);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col circuit-pattern transition-colors duration-200">
+    <div className="min-h-screen circuit-pattern text-slate-600 dark:text-slate-200 flex flex-col transition-colors duration-200 selection:bg-teal-500/20 selection:text-teal-900 dark:selection:text-teal-200">
       
-      {/* Top Navbar */}
+      {/* Top Navigation */}
       <Navbar
         darkMode={darkMode}
         onToggleTheme={() => setDarkMode(!darkMode)}
-        onOpenHostingGuide={() => setHostingGuideOpen(true)}
         onOpenPrintCv={() => setPrintCvOpen(true)}
       />
 
       {/* Main Content Sections */}
       <main className="flex-1">
         <Hero
-          onOpenHostingGuide={() => setHostingGuideOpen(true)}
           onOpenPrintCv={() => setPrintCvOpen(true)}
         />
         
@@ -85,16 +76,10 @@ export default function App() {
 
       {/* Footer */}
       <Footer
-        onOpenHostingGuide={() => setHostingGuideOpen(true)}
         onOpenPrintCv={() => setPrintCvOpen(true)}
       />
 
-      {/* Modals & Dialogs */}
-      <HostingGuideModal
-        isOpen={hostingGuideOpen}
-        onClose={() => setHostingGuideOpen(false)}
-      />
-
+      {/* Print CV Modal */}
       <PrintCvModal
         isOpen={printCvOpen}
         onClose={() => setPrintCvOpen(false)}

@@ -1,24 +1,48 @@
 import React from 'react';
-import { IMPACT_METRICS } from '../data/portfolioData';
 
 export const ImpactStrip: React.FC = () => {
+  const stats = [
+    {
+      value: "Off-Grid",
+      label: "Community Solar Power",
+      description: "Decentralized charging hubs deployed across Tigray IDP camps",
+    },
+    {
+      value: "1,000+",
+      label: "Students & Tech Upskilled",
+      description: "Via Gebeya-Safaricom & Mastercard Foundation SEED initiatives",
+    },
+    {
+      value: "200+",
+      label: "Entrepreneurs Mentored",
+      description: "Certified UNCTAD-EMPRETEC & EBMS trainer with EDI Ethiopia",
+    },
+    {
+      value: "5,000+",
+      label: "Community Beneficiaries",
+      description: "Impacted through humanitarian and Rotary Club Mekelle initiatives",
+    },
+  ];
+
   return (
-    <section className="py-8 bg-slate-100/60 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
+    <section className="py-12 border-b border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          {IMPACT_METRICS.map((metric, idx) => (
-            <div 
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, idx) => (
+            <div
               key={idx}
-              className="p-4 sm:p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs"
+              className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between"
             >
-              <div className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-amber-600 dark:text-amber-400 font-mono tracking-tight tabular-nums truncate">
-                {metric.value}
+              <div>
+                <div className="font-mono text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="font-serif text-base font-bold text-slate-900 dark:text-slate-100 mt-3 leading-snug">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-1">
-                {metric.label}
-              </div>
-              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">
-                {metric.sublabel}
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                {stat.description}
               </p>
             </div>
           ))}

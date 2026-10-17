@@ -20,14 +20,14 @@ export const HardwareTelemetry: React.FC = () => {
   const pulseDuration = clockSpeed === '100MHz' ? '4s' : clockSpeed === '250MHz' ? '2.2s' : '1.2s';
 
   return (
-    <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm overflow-hidden">
+    <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800/90 bg-white dark:bg-[#0b1322] p-5 shadow-xs overflow-hidden">
       {/* Background radial accent */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/5 dark:bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-red-950/10 dark:bg-red-900/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header telemetry info */}
       <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
         <div className="flex items-center gap-2">
-          <Cpu className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+          <Cpu className="w-4 h-4 text-red-700 dark:text-amber-400" />
           <span className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 font-mono">
             FPGA Telemetry &amp; Waveform Trace
           </span>
@@ -54,7 +54,7 @@ export const HardwareTelemetry: React.FC = () => {
           `}</style>
 
           {/* Static Traces */}
-          <g className="text-slate-300 dark:text-slate-700">
+          <g className="text-slate-300 dark:text-slate-700/80">
             <path className="trace-line" d="M0 20 H140 L160 40 H460" />
             <path className="trace-line" d="M0 50 H220 L230 60 H460" />
             <path className="trace-line" d="M0 80 H180 L190 75 H460" />
@@ -94,13 +94,13 @@ export const HardwareTelemetry: React.FC = () => {
             width="100" 
             height="100" 
             rx="8" 
-            className="fill-slate-100 dark:fill-slate-800 stroke-teal-600 dark:stroke-teal-400 stroke-2 hover:stroke-amber-500 transition-colors"
+            className="fill-slate-100 dark:fill-slate-800/90 stroke-red-800 dark:stroke-amber-500/80 stroke-2 hover:stroke-amber-400 transition-colors"
           />
           <circle cx="480" cy="24" r="3" fill="#d97706" />
           <text x="515" y="56" textAnchor="middle" className="text-xs font-mono font-bold fill-slate-800 dark:fill-slate-100">
             GYA
           </text>
-          <text x="515" y="74" textAnchor="middle" className="text-[10px] font-mono fill-teal-700 dark:fill-teal-300">
+          <text x="515" y="74" textAnchor="middle" className="text-[10px] font-mono fill-red-700 dark:fill-amber-300 font-semibold">
             MIT·EE
           </text>
           <text x="515" y="90" textAnchor="middle" className="text-[9px] font-mono fill-slate-400">
@@ -110,8 +110,8 @@ export const HardwareTelemetry: React.FC = () => {
 
         {/* Floating Toast Notification */}
         {toastMsg && (
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-mono shadow-lg border border-teal-500/30 flex items-center gap-1.5 animate-in fade-in duration-150">
-            <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-slate-900 text-white text-xs font-mono shadow-lg border border-amber-500/30 flex items-center gap-1.5 animate-in fade-in duration-150">
+            <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
             <span>{toastMsg}</span>
           </div>
         )}
@@ -121,7 +121,7 @@ export const HardwareTelemetry: React.FC = () => {
       <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800">
         <div className="flex items-center gap-2">
           <span className="font-mono text-[11px] text-slate-400">Master Clock:</span>
-          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-0.5 rounded-lg">
+          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 p-0.5 rounded-full">
             {(['100MHz', '250MHz', '500MHz'] as const).map((spd) => (
               <button
                 key={spd}
@@ -129,7 +129,7 @@ export const HardwareTelemetry: React.FC = () => {
                   setClockSpeed(spd);
                   showToast(`Master PLL clock locked at ${spd}`);
                 }}
-                className={`px-2 py-0.5 rounded font-mono text-[11px] transition-colors ${
+                className={`px-2.5 py-0.5 rounded-full font-mono text-[11px] transition-colors ${
                   clockSpeed === spd
                     ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs font-semibold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -143,7 +143,7 @@ export const HardwareTelemetry: React.FC = () => {
 
         <div className="flex items-center gap-3 font-mono text-[11px]">
           <span className="flex items-center gap-1 text-slate-500">
-            <Activity className="w-3.5 h-3.5 text-teal-600" />
+            <Activity className="w-3.5 h-3.5 text-red-700 dark:text-amber-400" />
             <span>Bus: AXI4-Stream</span>
           </span>
           <span className="flex items-center gap-1 text-slate-500">
