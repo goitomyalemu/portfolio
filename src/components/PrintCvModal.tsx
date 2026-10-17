@@ -92,7 +92,7 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
               <span>|</span>
               <span>{PERSONAL_INFO.emailInstitutional}</span>
               <span>|</span>
-              <span>{PERSONAL_INFO.phoneFormatted}</span>
+              <span>WhatsApp: {PERSONAL_INFO.whatsappHandle}</span>
               <span>|</span>
               <span>Mekelle, Ethiopia</span>
             </div>
@@ -170,7 +170,7 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
             <ul className="list-disc pl-5 space-y-2 text-slate-800">
               {PUBLICATIONS.map((pub, idx) => (
                 <li key={idx}>
-                  <strong>{pub.authors.join(', ')} ({pub.year}).</strong> <em>{pub.title}</em>. {pub.venue}.
+                  <strong>{pub.authors.join(', ')} ({pub.year}).</strong> <em>{pub.title}</em>. {pub.venue}. {pub.doi ? `DOI: https://doi.org/${pub.doi}` : pub.url ? `Available: ${pub.url}` : ''}
                 </li>
               ))}
             </ul>

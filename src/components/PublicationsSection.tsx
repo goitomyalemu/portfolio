@@ -95,9 +95,23 @@ export const PublicationsSection: React.FC = () => {
                       {renderAuthors(pub.authors)}
                     </p>
 
-                    <p className="text-xs font-semibold text-teal-700 dark:text-teal-400">
-                      {pub.venue}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <p className="text-xs font-semibold text-teal-700 dark:text-teal-400">
+                        {pub.venue}
+                      </p>
+                      {pub.doi && (
+                        <a
+                          href={`https://doi.org/${pub.doi}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1 font-mono text-[11px] text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-300 transition-colors"
+                        >
+                          <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">DOI</span>
+                          <span className="underline underline-offset-2">{pub.doi}</span>
+                          <ExternalLink className="w-2.5 h-2.5" />
+                        </a>
+                      )}
+                    </div>
                   </div>
 
                   {/* Actions Column */}

@@ -17,6 +17,7 @@ export interface Publication {
   year: number;
   type: 'journal' | 'article' | 'conference';
   url?: string;
+  doi?: string;
   bibtex: string;
   abstract?: string;
 }
@@ -66,10 +67,11 @@ export const PERSONAL_INFO = {
   location: "Mekelle, Tigray, Ethiopia",
   emailPrimary: "goitomy12@gmail.com",
   emailInstitutional: "goitom.yisfa@mu.edu.et",
-  phone: "+251 946 904 032",
-  phoneFormatted: "+251 946 904 032",
-  whatsappUrl: "https://wa.me/251946904032",
-  linkedin: "https://linkedin.com/in/goitom-yisfa-mu-mit-ethiopia",
+  phone: "@gy_alemu",
+  phoneFormatted: "@gy_alemu",
+  whatsappHandle: "@gy_alemu",
+  whatsappUrl: "https://wa.me/gy_alemu",
+  linkedin: "https://linkedin.com/in/goitomyalemu",
   twitter: "https://x.com/GoitomYisfa",
   geometratechUrl: "https://geometratech.com/",
   thranUrl: "https://thran.org.et/",
@@ -82,12 +84,12 @@ My engineering background spans Reconfigurable Computing (FPGAs), Embedded Syste
 
 export const IMPACT_METRICS = [
   { 
-    id: "solar-idp",
-    value: "5,000+", 
-    label: "IDP Solar Beneficiaries", 
-    sublabel: "Decentralized clean energy & phone charging hubs deployed across Tigray IDP camps",
-    tag: "Renewable Energy",
-    category: "solar"
+    id: "theses-supervision",
+    value: "40+", 
+    label: "Theses & Research Supervised", 
+    sublabel: "Master's and undergraduate engineering capstones guided at Mekelle Institute of Technology",
+    tag: "Academic Leadership",
+    category: "academic"
   },
   { 
     id: "amd-contest",
@@ -221,6 +223,7 @@ export const PUBLICATIONS: Publication[] = [
     venue: "AIDS Research and Therapy",
     year: 2026,
     type: "journal",
+    doi: "10.1186/s12981-026-00871-8",
     url: "https://doi.org/10.1186/s12981-026-00871-8",
     abstract: "Investigates pre-conflict prescription patterns, treatment transitions, and virological suppression efficacy of combination antiretroviral therapy (cART) regimens in HIV-1 cohorts in Tigray, Ethiopia, providing vital evidence for healthcare continuity in resource-constrained and conflict-affected settings.",
     bibtex: `@article{teame2026preconflict,
@@ -239,12 +242,16 @@ export const PUBLICATIONS: Publication[] = [
     venue: "Branna Journal of Engineering and Technology (BJET)",
     year: 2025,
     type: "journal",
+    doi: "10.71624/3ebk5z08",
+    url: "https://doi.org/10.71624/3ebk5z08",
     abstract: "Presents a hardware-efficient polling-based traffic light controller implemented on an 8051 microcontroller using optimized assembly language. The architecture introduces emergency override interrupts for ambulances and fire trucks, mitigating junction congestion in developing municipal road networks.",
     bibtex: `@article{meresa2025deployment,
   title={Deployment of a Polling-Based Assembly Language Programmed 8051 Microcontroller for Traffic Light Control with Consideration for Emergency Vehicles},
   author={Meresa, S. T. and Alemu, G. Y. and Desta, G. and Tareke, H. B. and Kiday, H. and Weldegebriel, G.},
   journal={Branna Journal of Engineering and Technology (BJET)},
-  year={2025}
+  year={2025},
+  doi={10.71624/3ebk5z08},
+  url={https://doi.org/10.71624/3ebk5z08}
 }`
   },
   {
@@ -254,6 +261,7 @@ export const PUBLICATIONS: Publication[] = [
     venue: "Human Vaccines & Immunotherapeutics, 21(1), 2478707",
     year: 2025,
     type: "journal",
+    doi: "10.1080/21645515.2025.2478707",
     url: "https://doi.org/10.1080/21645515.2025.2478707",
     abstract: "Examines epidemiological and demographic determinants associated with full child immunization coverage across Ethiopian administrative zones using data from the 2019 EMDHS, highlighting actionable public health targets to enhance rural and underserved vaccine delivery.",
     bibtex: `@article{teame2025prevalence,

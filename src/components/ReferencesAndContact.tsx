@@ -118,12 +118,12 @@ export const ReferencesAndContact: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Telephone / WhatsApp */}
+                {/* WhatsApp */}
                 <div className="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-1.5 shadow-2xs">
-                  <span className="text-[11px] font-mono uppercase text-slate-500 dark:text-slate-400 font-semibold">Telephone / WhatsApp</span>
+                  <span className="text-[11px] font-mono uppercase text-slate-500 dark:text-slate-400 font-semibold">WhatsApp</span>
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-xs font-mono font-medium text-slate-900 dark:text-slate-100">
-                      {PERSONAL_INFO.phoneFormatted}
+                      {PERSONAL_INFO.whatsappHandle}
                     </span>
                     <a
                       href={PERSONAL_INFO.whatsappUrl}
