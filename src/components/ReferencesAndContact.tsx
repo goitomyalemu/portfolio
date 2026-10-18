@@ -185,6 +185,30 @@ export const ReferencesAndContact: React.FC = () => {
                   <span>X / Twitter</span>
                 </a>
               </div>
+
+              {/* Inquiry Subject Quick Presets */}
+              <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                <span className="block text-[11px] font-mono uppercase text-slate-500 dark:text-slate-400 font-semibold mb-2">
+                  Quick Email Presets (1-Click Draft):
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { label: 'Research Collaboration', subject: 'Academic Research & Paper Collaboration Inquiry' },
+                    { label: 'Solar & Microgrids', subject: 'GeometraTech Community Solar & Clean Energy Inquiry' },
+                    { label: 'Student Mentorship', subject: 'MSc/BSc Academic Mentorship & Thesis Supervision' },
+                    { label: 'Data Governance', subject: 'Higher Education Digital Transformation & HEMIS Inquiry' },
+                  ].map((preset, pIdx) => (
+                    <a
+                      key={pIdx}
+                      href={`mailto:${PERSONAL_INFO.emailPrimary}?subject=${encodeURIComponent(preset.subject)}`}
+                      className="px-2.5 py-1 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:text-teal-700 dark:hover:text-teal-300 hover:border-teal-500/50 transition-colors shadow-2xs inline-flex items-center gap-1.5"
+                    >
+                      <span>{preset.label}</span>
+                      <span className="text-[10px] text-slate-400">↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

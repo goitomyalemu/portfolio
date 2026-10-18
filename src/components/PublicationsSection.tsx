@@ -131,7 +131,8 @@ export const PublicationsSection: React.FC = () => {
               return (
                 <div 
                   key={pub.id}
-                  className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs hover:border-teal-500/50 transition-colors"
+                  id={`pub-${pub.id}`}
+                  className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs hover:border-teal-500/50 transition-colors scroll-mt-24"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="space-y-2 flex-1">
@@ -158,16 +159,33 @@ export const PublicationsSection: React.FC = () => {
                           {pub.venue}
                         </p>
                         {pub.doi && (
-                          <a
-                            href={`https://doi.org/${pub.doi}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-1 font-mono text-[11px] text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors"
-                          >
-                            <span className="font-semibold text-slate-500">DOI:</span>
-                            <span className="underline underline-offset-2">{pub.doi}</span>
-                            <ExternalLink className="w-2.5 h-2.5" />
-                          </a>
+                          <div className="inline-flex items-center gap-1.5 font-mono text-[11px]">
+                            <a
+                              href={`https://doi.org/${pub.doi}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors"
+                            >
+                              <span className="font-semibold text-slate-500">DOI:</span>
+                              <span className="underline underline-offset-2">{pub.doi}</span>
+                              <ExternalLink className="w-2.5 h-2.5" />
+                            </a>
+                            <button
+                              onClick={() => {
+                                navigator.clipboard.writeText(pub.doi!);
+                                setCopiedKey(`doi-${pub.id}`);
+                                setTimeout(() => setCopiedKey(null), 2500);
+                              }}
+                              className="p-1 rounded text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                              title="Copy DOI identifier"
+                            >
+                              {copiedKey === `doi-${pub.id}` ? (
+                                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-sans font-semibold">Copied!</span>
+                              ) : (
+                                <Copy className="w-2.5 h-2.5" />
+                              )}
+                            </button>
+                          </div>
                         )}
                       </div>
                     </div>

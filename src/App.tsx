@@ -11,6 +11,7 @@ import { SkillsAndCertifications } from './components/SkillsAndCertifications';
 import { ReferencesAndContact } from './components/ReferencesAndContact';
 import { Footer } from './components/Footer';
 import { PrintCvModal } from './components/PrintCvModal';
+import { SearchModal } from './components/SearchModal';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -26,6 +27,23 @@ export default function App() {
   });
 
   const [printCvOpen, setPrintCvOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Global keyboard shortcut: Cmd+K / Ctrl+K or / to open Search
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      } else if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes((document.activeElement?.tagName || ''))) {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, []);
 
   useEffect(() => {
     try {
@@ -49,6 +67,7 @@ export default function App() {
         darkMode={darkMode}
         onToggleTheme={() => setDarkMode(!darkMode)}
         onOpenPrintCv={() => setPrintCvOpen(true)}
+        onOpenSearch={() => setSearchOpen(true)}
       />
 
       {/* Main Content Sections */}
@@ -77,6 +96,12 @@ export default function App() {
       {/* Footer */}
       <Footer
         onOpenPrintCv={() => setPrintCvOpen(true)}
+      />
+
+      {/* Global Quick Search & Filter Modal */}
+      <SearchModal
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
       />
 
       {/* Print CV Modal */}

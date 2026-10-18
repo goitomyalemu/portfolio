@@ -35,7 +35,10 @@ export const ExperienceTimeline: React.FC = () => {
                       : 'border-slate-400 dark:border-slate-600'
                   }`} />
 
-                  <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs group-hover:border-teal-600/50 transition-colors">
+                  <div 
+                    id={`exp-${idx}`} 
+                    className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs group-hover:border-teal-600/50 transition-colors scroll-mt-24"
+                  >
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <h3 className="font-serif text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">
                         {exp.role}

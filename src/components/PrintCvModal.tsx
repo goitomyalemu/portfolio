@@ -114,7 +114,27 @@ ${THESIS_SUPERVISIONS.map(t => `* ${t.title} (${t.year}) — ${t.level} Engineer
               title="Copy entire CV as clean plain text"
             >
               {copiedKey === 'plain-cv' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <FileText className="w-3.5 h-3.5" />}
-              <span>{copiedKey === 'plain-cv' ? 'Copied All' : 'Copy Plaintext'}</span>
+              <span>{copiedKey === 'plain-cv' ? 'Copied' : 'Copy Text'}</span>
+            </button>
+
+            <button
+              onClick={() => {
+                const text = generatePlaintextCv();
+                const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `Goitom_Yisfa_Alemu_CV.txt`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              }}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-medium transition-colors shadow-2xs cursor-pointer"
+              title="Download CV as a plain text (.txt) file directly"
+            >
+              <Download className="w-3.5 h-3.5 text-teal-700" />
+              <span>Download .TXT</span>
             </button>
 
             <button

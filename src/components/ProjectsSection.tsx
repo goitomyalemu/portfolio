@@ -118,7 +118,8 @@ export const ProjectsSection: React.FC = () => {
               return (
                 <div
                   key={project.id}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-2xs hover:border-teal-500/50 hover:shadow-xs transition-all flex flex-col group"
+                  id={`project-${project.id}`}
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-2xs hover:border-teal-500/50 hover:shadow-xs transition-all flex flex-col group scroll-mt-24"
                 >
                   {/* Project Media Image */}
                   {project.image && (
