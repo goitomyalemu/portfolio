@@ -110,7 +110,7 @@ export const HardwareTelemetry: React.FC = () => {
 
         {/* Floating Toast Notification */}
         {toastMsg && (
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-slate-900 text-white text-xs font-mono shadow-lg border border-amber-500/30 flex items-center gap-1.5 animate-in fade-in duration-150">
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-teal-900 text-teal-100 text-xs font-mono shadow-lg border border-teal-700/50 flex items-center gap-1.5 animate-in fade-in duration-150">
             <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
             <span>{toastMsg}</span>
           </div>

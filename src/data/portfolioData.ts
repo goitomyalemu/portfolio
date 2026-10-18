@@ -607,3 +607,48 @@ export const REFERENCES = [
     note: "Contact details available on request"
   }
 ];
+
+export interface CourseTaught {
+  title: string;
+  code?: string;
+  level: 'Undergraduate' | 'Graduate' | 'Laboratory';
+  institution: string;
+  topics: string[];
+}
+
+export const COURSES_TAUGHT: CourseTaught[] = [
+  {
+    title: "Microcontrollers & Embedded Systems",
+    code: "ECE 3201",
+    level: "Undergraduate",
+    institution: "Mekelle Institute of Technology (MIT)",
+    topics: ["8051 Assembly Architecture", "ARM Cortex-M", "Embedded C/C++", "Timers, Interrupts & UART"]
+  },
+  {
+    title: "Machine Learning & Neural Networks",
+    code: "ECE 4205",
+    level: "Undergraduate",
+    institution: "Mekelle Institute of Technology (MIT)",
+    topics: ["Supervised & Unsupervised Learning", "Deep Neural Networks", "Edge Model Quantization", "PyTorch & ONNX Runtime"]
+  },
+  {
+    title: "Digital Logic Design & FPGA Lab",
+    code: "ECE 2102",
+    level: "Laboratory",
+    institution: "Mekelle Institute of Technology (MIT)",
+    topics: ["VHDL & Verilog RTL", "Xilinx Vivado Suite", "PYNQ-Z1 Reconfigurable Computing", "Finite State Machines"]
+  },
+  {
+    title: "Digital Signal Processing (DSP)",
+    code: "ECE 3104",
+    level: "Undergraduate",
+    institution: "Aksum University & MIT",
+    topics: ["Discrete-Time Fourier Transform", "IIR/FIR Digital Filter Design", "Spectral Analysis", "MATLAB Modeling"]
+  }
+];
+
+export const ACADEMIC_BLURBS = {
+  shortBio: "Goitom Yisfa Alemu is a Licensed Professional Electrical Engineer, Lecturer at the Mekelle Institute of Technology (MIT), and Director of Information Management at Mekelle University, Ethiopia. He holds an MSc in Microelectronics Engineering from Addis Ababa University and is the founder of GeometraTech, a clean-energy engineering venture delivering decentralized solar charging microgrids in Tigray. His research spans reconfigurable computing (FPGAs), embedded hardware architectures, and offline edge deep learning for low-resource communities.",
+  researchStatement: "Goitom Yisfa Alemu's research focuses on the intersection of embedded systems, reconfigurable computing (FPGAs), and edge artificial intelligence for resilient infrastructure in energy-constrained and post-conflict environments. His recent scholarship includes microcomputer-based traffic automation with emergency vehicle preemption in the Branna Journal of Engineering and Technology (BJET), as well as clinical data analytics on antiretroviral therapy (cART) efficacy. In 2024, he was recognized globally as an AMD Pervasive AI contest finalist for designing an offline clinical triage AI assistant on Ryzen AI NPUs."
+};
+

@@ -49,10 +49,10 @@ export const GeometraTechSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 left-4 right-4 text-white">
                   <div className="text-[11px] font-mono uppercase tracking-wider text-amber-300 font-bold">
-                    Field Deployment · Tigray IDP Camps
+                    Field Deployment · Tigray Communities
                   </div>
                   <div className="text-xs text-slate-200 mt-0.5">
-                    Displaced families and community members provided reliable mobile phone charging and lighting hubs
+                    Rural community members and local enterprises provided reliable mobile phone charging and clean lighting hubs
                   </div>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export const GeometraTechSection: React.FC = () => {
                 <div className="flex items-start gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-teal-600 mt-1.5 shrink-0" />
                   <div>
-                    <strong className="text-slate-900 dark:text-slate-100">Shared Community Hubs:</strong> Centralized charging nodes serving displaced and rural families.
+                    <strong className="text-slate-900 dark:text-slate-100">Shared Community Hubs:</strong> Centralized charging nodes serving off-grid and rural families.
                   </div>
                 </div>
                 <div className="flex items-start gap-2.5">

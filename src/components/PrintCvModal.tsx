@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, Printer, Download, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Printer, Download, ExternalLink, Copy, Check, FileText } from 'lucide-react';
 import { 
   PERSONAL_INFO, 
   WORK_EXPERIENCE, 
@@ -10,7 +10,9 @@ import {
   TECHNICAL_SKILLS, 
   CERTIFICATIONS, 
   COMMUNITY_AND_NETWORKS,
-  REFERENCES 
+  REFERENCES,
+  ACADEMIC_BLURBS,
+  COURSES_TAUGHT
 } from '../data/portfolioData';
 
 interface PrintCvModalProps {
@@ -19,6 +21,8 @@ interface PrintCvModalProps {
 }
 
 export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) => {
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
   React.useEffect(() => {
     if (!isOpen) return;
     const originalOverflow = document.body.style.overflow;
@@ -43,8 +47,39 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
     window.print();
   };
 
+  const handleCopyText = (text: string, key: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 2500);
+  };
+
+  const generatePlaintextCv = (): string => {
+    return `${PERSONAL_INFO.name.toUpperCase()}
+${PERSONAL_INFO.title}
+Institution: ${PERSONAL_INFO.institution}
+Email: ${PERSONAL_INFO.emailPrimary} | ${PERSONAL_INFO.emailInstitutional}
+WhatsApp: ${PERSONAL_INFO.whatsappHandle} | LinkedIn: ${PERSONAL_INFO.linkedin}
+Location: ${PERSONAL_INFO.location}
+
+=== PROFESSIONAL SUMMARY ===
+${PERSONAL_INFO.fullBio}
+
+=== WORK EXPERIENCE ===
+${WORK_EXPERIENCE.map(exp => `* ${exp.role} — ${exp.organization} (${exp.period})\n  ${exp.description.join('\n  ')}`).join('\n\n')}
+
+=== EDUCATION ===
+${EDUCATION.map(edu => `* ${edu.degree} — ${edu.institution} (${edu.period})${edu.thesis ? `\n  Thesis: ${edu.thesis}` : ''}`).join('\n\n')}
+
+=== PEER-REVIEWED PUBLICATIONS ===
+${PUBLICATIONS.map(pub => `* ${pub.authors.join(', ')} (${pub.year}). ${pub.title}. ${pub.venue}.${pub.doi ? ` DOI: https://doi.org/${pub.doi}` : ''}`).join('\n')}
+
+=== MASTER'S & UNDERGRADUATE THESES SUPERVISED ===
+${THESIS_SUPERVISIONS.map(t => `* ${t.title} (${t.year}) — ${t.level} Engineering Thesis in ${t.category}`).join('\n')}
+`;
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
         className="relative w-full max-w-4xl max-h-[94vh] bg-white text-slate-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
         role="dialog"
@@ -52,27 +87,48 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
         aria-labelledby="cv-modal-title"
       >
         {/* Top Action Bar (hidden when printing) */}
-        <div className="no-print flex items-center justify-between px-6 py-3.5 bg-slate-100 border-b border-slate-200">
+        <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-6 py-3.5 bg-slate-100 border-b border-slate-200">
           <div>
             <h2 id="cv-modal-title" className="text-sm font-bold text-slate-800">
               Curriculum Vitae — {PERSONAL_INFO.name}
             </h2>
             <p className="text-[11px] text-slate-500">
-              ATS-compliant, printable academic CV format
+              ATS-compliant, printable academic CV format &amp; grant utilities
             </p>
           </div>
-          <div className="flex items-center gap-2">
+
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Quick Copy Blurbs for Grants & Papers */}
+            <button
+              onClick={() => handleCopyText(ACADEMIC_BLURBS.shortBio, 'short-bio')}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-medium transition-colors shadow-2xs cursor-pointer"
+              title="Copy short academic bio for grant applications & conferences"
+            >
+              {copiedKey === 'short-bio' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedKey === 'short-bio' ? 'Copied Bio' : 'Copy Grant Bio'}</span>
+            </button>
+
+            <button
+              onClick={() => handleCopyText(generatePlaintextCv(), 'plain-cv')}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-medium transition-colors shadow-2xs cursor-pointer"
+              title="Copy entire CV as clean plain text"
+            >
+              {copiedKey === 'plain-cv' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <FileText className="w-3.5 h-3.5" />}
+              <span>{copiedKey === 'plain-cv' ? 'Copied All' : 'Copy Plaintext'}</span>
+            </button>
+
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Print / Save PDF</span>
             </button>
+
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors"
-              aria-label="Close"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+              aria-label="Close CV Modal"
             >
               <X className="w-5 h-5" />
             </button>
@@ -109,28 +165,30 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
 
           {/* Profile Statement */}
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
-              Profile
-            </h2>
-            <p className="text-slate-800 leading-relaxed">
-              Electrical Engineer and Lecturer specializing in Embedded Systems, Reconfigurable Computing (FPGAs), Machine Learning, Renewable Energy Microgrids, and Higher Education Digital Transformation. Director of Information Management at Mekelle University and Founder of GeometraTech. Proven track record in community solar charging deployment for internally displaced populations across Tigray and edge AI healthcare diagnostic tools.
+            <h3 className="font-bold uppercase tracking-wider text-xs border-b border-slate-300 pb-1 mb-2 text-slate-900">
+              Professional Summary
+            </h3>
+            <p className="text-justify text-slate-800">
+              {PERSONAL_INFO.fullBio}
             </p>
           </div>
 
-          {/* Work Experience */}
+          {/* Academic Appointments & Leadership */}
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-3">
-              Work Experience
-            </h2>
+            <h3 className="font-bold uppercase tracking-wider text-xs border-b border-slate-300 pb-1 mb-2.5 text-slate-900">
+              Work Experience &amp; Academic Appointments
+            </h3>
             <div className="space-y-4">
               {WORK_EXPERIENCE.map((exp, idx) => (
                 <div key={idx} className="space-y-1">
-                  <div className="flex justify-between items-baseline font-bold text-slate-950">
+                  <div className="flex justify-between font-bold text-slate-900">
                     <span>{exp.role} — {exp.organization}</span>
-                    <span className="font-mono text-xs font-normal text-slate-600">{exp.period}</span>
+                    <span className="font-mono text-xs">{exp.period}</span>
                   </div>
-                  <div className="text-xs text-slate-600 italic">{exp.location}</div>
-                  <ul className="list-disc pl-5 space-y-0.5 text-slate-800">
+                  <div className="text-xs text-slate-600 italic">
+                    {exp.location}
+                  </div>
+                  <ul className="list-disc pl-5 space-y-1 text-slate-800 mt-1">
                     {exp.description.map((d, dIdx) => (
                       <li key={dIdx}>{d}</li>
                     ))}
@@ -142,19 +200,22 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
 
           {/* Education */}
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
+            <h3 className="font-bold uppercase tracking-wider text-xs border-b border-slate-300 pb-1 mb-2 text-slate-900">
               Education
-            </h2>
+            </h3>
             <div className="space-y-3">
               {EDUCATION.map((edu, idx) => (
-                <div key={idx}>
-                  <div className="flex justify-between items-baseline font-bold text-slate-950">
+                <div key={idx} className="space-y-0.5">
+                  <div className="flex justify-between font-bold text-slate-900">
                     <span>{edu.degree} — {edu.institution}</span>
-                    <span className="font-mono text-xs font-normal text-slate-600">{edu.period}</span>
+                    <span className="font-mono text-xs">{edu.period}</span>
+                  </div>
+                  <div className="text-xs text-slate-600">
+                    {edu.location}
                   </div>
                   {edu.thesis && (
-                    <div className="text-xs text-slate-700 italic">
-                      Thesis: {edu.thesis}
+                    <div className="text-xs text-slate-700 italic mt-0.5">
+                      Thesis: "{edu.thesis}" {edu.advisor ? `(Advisor: ${edu.advisor})` : ''}
                     </div>
                   )}
                 </div>
@@ -162,79 +223,77 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
             </div>
           </div>
 
+          {/* Courses Taught */}
+          <div>
+            <h3 className="font-bold uppercase tracking-wider text-xs border-b border-slate-300 pb-1 mb-2 text-slate-900">
+              Curriculum &amp; Courses Taught
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              {COURSES_TAUGHT.map((course, idx) => (
+                <div key={idx} className="p-2 rounded bg-slate-50 border border-slate-200">
+                  <strong className="text-slate-900">{course.title}</strong>
+                  <div className="text-[11px] text-slate-600">{course.topics.join(' · ')}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Publications */}
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
-              Publications &amp; Articles
-            </h2>
-            <ul className="list-disc pl-5 space-y-2 text-slate-800">
+            <h3 className="font-bold uppercase tracking-wider text-xs border-b border-slate-300 pb-1 mb-2 text-slate-900">
+              Peer-Reviewed Publications &amp; Research Articles
+            </h3>
+            <ol className="list-decimal pl-5 space-y-2 text-slate-800">
               {PUBLICATIONS.map((pub, idx) => (
                 <li key={idx}>
                   <strong>{pub.authors.join(', ')} ({pub.year}).</strong> <em>{pub.title}</em>. {pub.venue}. {pub.doi ? `DOI: https://doi.org/${pub.doi}` : pub.url ? `Available: ${pub.url}` : ''}
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
 
-          {/* Thesis Supervision */}
+          {/* Supervisions */}
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
-              Undergraduate (BSc) Thesis Supervision (MIT, Mekelle University)
-            </h2>
+            <h3 className="font-bold uppercase tracking-wider text-xs border-b border-slate-300 pb-1 mb-2 text-slate-900">
+              Engineering Thesis Supervisions (Mekelle Institute of Technology)
+            </h3>
             <ul className="list-disc pl-5 space-y-1.5 text-slate-800">
-              {THESIS_SUPERVISIONS.map((t, idx) => (
+              {THESIS_SUPERVISIONS.map((item, idx) => (
                 <li key={idx}>
-                  <strong>[{t.year}] {t.title}</strong> ({t.level} Thesis). {t.description}
+                  <strong>({item.year}).</strong> "{item.title}" — <em>{item.level} Engineering Thesis in {item.category}</em>.
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Skills */}
+          {/* Technical Skills & Certifications */}
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
-              Technical Skills
-            </h2>
-            <div className="space-y-1 text-slate-800">
-              {TECHNICAL_SKILLS.map((sk, idx) => (
+            <h3 className="font-bold uppercase tracking-wider text-xs border-b border-slate-300 pb-1 mb-2 text-slate-900">
+              Technical Proficiencies &amp; Certifications
+            </h3>
+            <div className="space-y-2 text-slate-800">
+              {TECHNICAL_SKILLS.map((grp, idx) => (
                 <div key={idx}>
-                  <strong>{sk.category}:</strong> {sk.items.map(i => `${i.name} (${i.detail})`).join('; ')}
+                  <strong className="text-slate-900">{grp.category}:</strong>{' '}
+                  <span>{grp.items.map(i => `${i.name} (${i.detail})`).join('; ')}</span>
                 </div>
               ))}
+              <div className="pt-1">
+                <strong className="text-slate-900">Professional Licenses &amp; Certifications:</strong>{' '}
+                <span>
+                  {CERTIFICATIONS.map(c => `${c.title} (${c.issuer}, ${c.year})`).join(' · ')}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Certifications */}
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
-              Key Certifications &amp; Accreditations
-            </h2>
-            <ul className="list-disc pl-5 space-y-0.5 text-slate-800">
-              {CERTIFICATIONS.map((cert, idx) => (
-                <li key={idx}>
-                  <strong>{cert.title}</strong> — {cert.issuer} ({cert.year})
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* References */}
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">
-              References
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {REFERENCES.map((ref, idx) => (
-                <div key={idx} className="text-slate-800">
-                  <strong>{ref.name}</strong><br />
-                  {ref.title}, {ref.organization}<br />
-                  <span className="text-[11px] text-slate-600 italic">{ref.note}</span>
-                </div>
-              ))}
-            </div>
+          {/* References Notice */}
+          <div className="pt-2 text-slate-600 text-xs italic">
+            Academic and professional references from Dr. Fana Hagos Berhane (President, Mekelle University), Dr. Getachew Alemu (AAiT, AAU), and Dr. Leake Enquay Weldemariam (MIT) available upon request.
           </div>
 
         </div>
+
       </div>
     </div>
   );

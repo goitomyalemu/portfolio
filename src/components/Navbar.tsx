@@ -72,10 +72,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
           </button>
 
-          {/* Contact Button: Near-black in light mode, crimson in dark mode */}
+          {/* Contact Button */}
           <a
             href="#contact"
-            className="inline-flex items-center px-4 py-1.5 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-teal-600 dark:hover:bg-teal-700 rounded-lg shadow-2xs transition-colors whitespace-nowrap"
+            className="inline-flex items-center px-4 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-700 rounded-lg shadow-2xs transition-colors whitespace-nowrap"
           >
             Contact
           </a>

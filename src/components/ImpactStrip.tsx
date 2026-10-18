@@ -5,12 +5,12 @@ export const ImpactStrip: React.FC = () => {
     {
       value: "Off-Grid",
       label: "Community Solar Power",
-      description: "Decentralized charging hubs deployed across Tigray IDP camps",
+      description: "Decentralized solar charging kiosks & microgrid infrastructure in Tigray",
     },
     {
       value: "1,000+",
       label: "Students & Tech Upskilled",
-      description: "Via Gebeya-Safaricom & Mastercard Foundation SEED initiatives",
+      description: "Trained in software & AI via Gebeya-Safaricom and Mastercard Foundation SEED",
     },
     {
       value: "200+",
@@ -18,23 +18,23 @@ export const ImpactStrip: React.FC = () => {
       description: "Certified UNCTAD-EMPRETEC & EBMS trainer with EDI Ethiopia",
     },
     {
-      value: "5,000+",
-      label: "Community Beneficiaries",
-      description: "Impacted through humanitarian and Rotary Club Mekelle initiatives",
+      value: "40+",
+      label: "Theses & Capstones Supervised",
+      description: "Master's & undergraduate engineering research guided at Mekelle Institute of Technology",
     },
   ];
 
   return (
-    <section className="py-12 border-b border-slate-200 dark:border-slate-800">
+    <section className="py-12 border-b border-slate-200 dark:border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between"
             >
               <div>
-                <div className="font-mono text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 tracking-tight">
+                <div className="font-mono text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 tracking-tight tabular-nums">
                   {stat.value}
                 </div>
                 <div className="font-serif text-base font-bold text-slate-900 dark:text-slate-100 mt-3 leading-snug">

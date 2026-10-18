@@ -7,44 +7,44 @@
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Crimson ramp (used as teal-*, the primary accent) */
-  --color-teal-50: #fcf1f3;
-  --color-teal-100: #f8dde2;
-  --color-teal-200: #f0bbc4;
-  --color-teal-300: #e58c9b;
-  --color-teal-400: #e0697c;
-  --color-teal-500: #c93a54;
-  --color-teal-600: #960b27;
-  --color-teal-700: #7b0920;
-  --color-teal-800: #5e0719;
-  --color-teal-900: #430512;
-  --color-teal-950: #2a030b;
+  /* Scholarly Crimson & Oxblood ramp (used as teal-*, the primary accent) */
+  --color-teal-50: #fbf3f4;
+  --color-teal-100: #f6e4e6;
+  --color-teal-200: #eec9cf;
+  --color-teal-300: #e0a3ad;
+  --color-teal-400: #cb6b7c;
+  --color-teal-500: #b0384d;
+  --color-teal-600: #8c1d30;
+  --color-teal-700: #731526;
+  --color-teal-800: #580e1c;
+  --color-teal-900: #420a14;
+  --color-teal-950: #29040b;
 
-  /* Warm neutrals (used as slate-*) */
-  --color-slate-50: #f6f4ee;
-  --color-slate-100: #eeebe3;
-  --color-slate-200: #e4e0d6;
-  --color-slate-300: #cfcac0;
-  --color-slate-400: #a39e98;
-  --color-slate-500: #6e6a68;
-  --color-slate-600: #4c4c4c;
-  --color-slate-700: #3a3637;
-  --color-slate-800: #262122;
-  --color-slate-900: #171213;
-  --color-slate-950: #0c0809;
+  /* Warm Academic Linen & Editorial Slate */
+  --color-slate-50: #faf8f5;
+  --color-slate-100: #f3efe6;
+  --color-slate-200: #e6e0d4;
+  --color-slate-300: #d3ccc0;
+  --color-slate-400: #a1988a;
+  --color-slate-500: #71695c;
+  --color-slate-600: #4a4338;
+  --color-slate-700: #363027;
+  --color-slate-800: #26211a;
+  --color-slate-900: #1b1712;
+  --color-slate-950: #120f0c;
 
-  /* Muted gold (used as amber-*, for rare secondary highlights only) */
-  --color-amber-50: #faf5e8;
-  --color-amber-100: #f2e6c4;
-  --color-amber-200: #e6d195;
-  --color-amber-300: #d9bb68;
-  --color-amber-400: #cfa84a;
-  --color-amber-500: #b88a2c;
-  --color-amber-600: #976d1c;
-  --color-amber-700: #7a5616;
-  --color-amber-800: #5f4311;
-  --color-amber-900: #45310d;
-  --color-amber-950: #2a1e07;
+  /* Warm Academic Gold (used as amber-*) */
+  --color-amber-50: #faf6ec;
+  --color-amber-100: #f4ebd2;
+  --color-amber-200: #ead8a7;
+  --color-amber-300: #dfc277;
+  --color-amber-400: #d3ab4d;
+  --color-amber-500: #bf912c;
+  --color-amber-600: #9e731b;
+  --color-amber-700: #7e5914;
+  --color-amber-800: #624310;
+  --color-amber-900: #48300c;
+  --color-amber-950: #2d1d05;
 }
 
 @layer base {
@@ -57,8 +57,8 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
     color: var(--color-slate-900);
-    letter-spacing: -0.01em;
-    font-weight: 600;
+    letter-spacing: -0.015em;
+    font-weight: 700;
   }
 
   code, kbd, samp, pre {
@@ -66,33 +66,37 @@
   }
 
   .dark body {
-    color: var(--color-slate-200);
-    background-color: var(--color-slate-950);
+    color: #e2e8f0;
+    background-color: #0f172a;
   }
 
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: var(--color-slate-100);
+    color: #f8fafc;
   }
 }
 
-/* Page background circuit texture: radial-gradient dots in crimson at 7% opacity, 24px spacing */
+/* Page canvas: Crisp, subtle architectural drafting grid on warm linen */
 .circuit-pattern {
-  background-color: #f6f4ee;
-  background-image: radial-gradient(rgba(150, 11, 39, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-color: #faf8f5;
+  background-image: 
+    linear-gradient(to right, rgba(74, 67, 56, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(74, 67, 56, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 .dark .circuit-pattern {
-  background-color: #0c0809;
-  background-image: radial-gradient(rgba(224, 105, 124, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-color: #0f172a;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 /* Print stylesheet */
 @media print {
   body {
     background: #ffffff !important;
-    color: #171213 !important;
+    color: #1b1712 !important;
   }
   .no-print {
     display: none !important;
@@ -105,6 +109,6 @@
   }
   a {
     text-decoration: none !important;
-    color: #171213 !important;
+    color: #1b1712 !important;
   }
 }

@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPrintCv }) => {
             </h1>
 
             {/* Professional Credential & Leadership Ribbon */}
-            <div className="space-y-1.5 border-l-4 border-teal-600 pl-4 py-2 bg-white/70 dark:bg-slate-900/60 rounded-r-xl border-y border-r border-slate-200/80 dark:border-slate-800/80">
+            <div className="p-4 sm:p-5 bg-white/90 dark:bg-slate-800/90 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-2xs space-y-2">
               <p className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">
                 <span>Founder, GeometraTech</span>{' '}
                 <span className="text-slate-300 dark:text-slate-600 font-normal">|</span>{' '}

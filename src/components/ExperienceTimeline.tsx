@@ -1,6 +1,6 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Building2 } from 'lucide-react';
-import { WORK_EXPERIENCE, EDUCATION } from '../data/portfolioData';
+import { Briefcase, GraduationCap, Building2, BookOpen, Layers } from 'lucide-react';
+import { WORK_EXPERIENCE, EDUCATION, COURSES_TAUGHT } from '../data/portfolioData';
 
 export const ExperienceTimeline: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ export const ExperienceTimeline: React.FC = () => {
             Work Experience &amp; Leadership
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-2xl leading-relaxed">
-            14+ years in university administration, digital governance transformation, 
+            Over 14 years in university administration, digital governance transformation, 
             and engineering pedagogy across Ethiopia's top higher education institutions.
           </p>
         </div>
@@ -31,26 +31,27 @@ export const ExperienceTimeline: React.FC = () => {
                   {/* Timeline Node */}
                   <div className={`absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 bg-white dark:bg-slate-900 ${
                     exp.current 
-                      ? 'border-teal-600 ring-4 ring-teal-500/20' 
+                      ? 'border-teal-700 ring-4 ring-teal-500/20' 
                       : 'border-slate-400 dark:border-slate-600'
                   }`} />
 
-                  <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs group-hover:border-teal-600/50 transition-colors">
+                  <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs group-hover:border-teal-600/50 transition-colors">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                       <h3 className="font-serif text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100">
                         {exp.role}
                       </h3>
-                      <span className={`text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
+                      {/* Zero-Pill Unboxed Period */}
+                      <span className={`text-xs font-mono font-semibold ${
                         exp.current
-                          ? 'text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/60 border-teal-200 dark:border-teal-900/60 font-bold'
-                          : 'text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700'
+                          ? 'text-teal-700 dark:text-teal-400 font-bold'
+                          : 'text-slate-500 dark:text-slate-400'
                       }`}>
                         {exp.period}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3.5 font-medium">
-                      <Building2 className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                      <Building2 className="w-3.5 h-3.5 text-teal-700 dark:text-teal-400" />
                       <span className="font-semibold text-slate-800 dark:text-slate-200">{exp.organization}</span>
                       <span>·</span>
                       <span>{exp.location}</span>
@@ -59,7 +60,7 @@ export const ExperienceTimeline: React.FC = () => {
                     <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                       {exp.description.map((item, dIdx) => (
                         <li key={dIdx} className="flex items-start gap-2.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-teal-600 mt-1.5 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-teal-700 dark:bg-teal-400 mt-1.5 shrink-0" />
                           <span className="leading-relaxed">{item}</span>
                         </li>
                       ))}
@@ -70,11 +71,13 @@ export const ExperienceTimeline: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Formal Degrees & Education */}
+          {/* Right Column: Formal Degrees & Academic Teaching */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+            
+            {/* Education Card */}
+            <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs">
               <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-slate-100 dark:border-slate-800">
-                <GraduationCap className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                <GraduationCap className="w-5 h-5 text-teal-700 dark:text-teal-400" />
                 <h3 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
                   Degrees &amp; Education
                 </h3>
@@ -107,15 +110,41 @@ export const ExperienceTimeline: React.FC = () => {
               </div>
             </div>
 
-            {/* Institutional Digital Governance box */}
-            <div className="p-5 rounded-2xl border border-teal-200 dark:border-teal-900/50 bg-teal-50/50 dark:bg-teal-950/20 text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
-              <strong className="block font-serif text-sm text-slate-900 dark:text-slate-100 font-bold">
-                Institutional Digital Governance
-              </strong>
-              <p className="leading-relaxed text-[11px] text-slate-600 dark:text-slate-300">
-                In his current role as Director of Information Management at Mekelle University, Goitom leads the consolidation of disparate college data into automated validation platforms (MU-DataLink and MU-KPI), connecting with national Higher Education Management Information Systems (HEMIS).
-              </p>
+            {/* Teaching & Academic Instruction Card */}
+            <div className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs space-y-4">
+              <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100 dark:border-slate-800">
+                <BookOpen className="w-5 h-5 text-teal-700 dark:text-teal-400" />
+                <div>
+                  <h3 className="font-serif text-base font-bold text-slate-900 dark:text-slate-100">
+                    Curriculum &amp; Courses Taught
+                  </h3>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Undergraduate &amp; Lab Instruction at MIT
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-3.5">
+                {COURSES_TAUGHT.map((course, cIdx) => (
+                  <div key={cIdx} className="space-y-1">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-bold text-slate-900 dark:text-slate-100">
+                        {course.title}
+                      </span>
+                      {course.code && (
+                        <span className="font-mono text-[10px] text-teal-700 dark:text-teal-400 font-semibold">
+                          {course.code}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                      {course.topics.join(' · ')}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
+
           </div>
 
         </div>
