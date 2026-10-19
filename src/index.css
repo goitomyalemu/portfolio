@@ -20,31 +20,31 @@
   --color-teal-900: #420a14;
   --color-teal-950: #29040b;
 
-  /* Warm Academic Linen & Editorial Slate */
-  --color-slate-50: #faf8f5;
-  --color-slate-100: #f3efe6;
-  --color-slate-200: #e6e0d4;
-  --color-slate-300: #d3ccc0;
-  --color-slate-400: #a1988a;
-  --color-slate-500: #71695c;
-  --color-slate-600: #4a4338;
-  --color-slate-700: #363027;
-  --color-slate-800: #26211a;
-  --color-slate-900: #1b1712;
-  --color-slate-950: #120f0c;
+  /* Crisp Architectural Slate & Deep Inks */
+  --color-slate-50: #f1f5f9;  /* Distinguished light slate canvas */
+  --color-slate-100: #e2e8f0;
+  --color-slate-200: #cbd5e1; /* Clearly defined, distinguishable card borders */
+  --color-slate-300: #94a3b8;
+  --color-slate-400: #64748b;
+  --color-slate-500: #475569;
+  --color-slate-600: #334155;
+  --color-slate-700: #1e293b;
+  --color-slate-800: #0f172a;
+  --color-slate-900: #090d16;
+  --color-slate-950: #020617;
 
   /* Warm Academic Gold (used as amber-*) */
-  --color-amber-50: #faf6ec;
-  --color-amber-100: #f4ebd2;
-  --color-amber-200: #ead8a7;
-  --color-amber-300: #dfc277;
-  --color-amber-400: #d3ab4d;
-  --color-amber-500: #bf912c;
-  --color-amber-600: #9e731b;
-  --color-amber-700: #7e5914;
-  --color-amber-800: #624310;
-  --color-amber-900: #48300c;
-  --color-amber-950: #2d1d05;
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+  --color-amber-950: #451a03;
 }
 
 @layer base {
@@ -67,7 +67,7 @@
 
   .dark body {
     color: #e2e8f0;
-    background-color: #0f172a;
+    background-color: #0b1120;
   }
 
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
@@ -75,21 +75,26 @@
   }
 }
 
-/* Page canvas: Crisp, subtle architectural drafting grid on warm linen */
+/* Page canvas: Crisp architectural drafting grid with high daylight contrast */
 .circuit-pattern {
-  background-color: #faf8f5;
+  background-color: #f1f5f9;
   background-image: 
-    linear-gradient(to right, rgba(74, 67, 56, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(74, 67, 56, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(51, 65, 85, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(51, 65, 85, 0.09) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 .dark .circuit-pattern {
-  background-color: #0f172a;
+  background-color: #0b1120;
   background-image: 
-    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+/* Card boxes elevation in daylight mode: tactile surface separation */
+.circuit-pattern .bg-white {
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
 }
 
 /* Print stylesheet */

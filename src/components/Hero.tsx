@@ -46,17 +46,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPrintCv }) => {
             </h1>
 
             {/* Professional Credential & Leadership Ribbon */}
-            <div className="p-4 sm:p-5 bg-white/90 dark:bg-slate-800/90 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-2xs space-y-2">
+            <div className="p-4 sm:p-5 bg-white dark:bg-slate-900/95 rounded-2xl border-l-4 border-l-[#8c1d30] border-y border-r border-slate-200 dark:border-slate-800 shadow-2xs space-y-2">
               <p className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">
                 <span>Founder, GeometraTech</span>{' '}
-                <span className="text-slate-300 dark:text-slate-600 font-normal">|</span>{' '}
+                <span className="text-slate-300 dark:text-slate-700 font-normal">|</span>{' '}
                 <span>Licensed Professional Electrical Engineer</span>{' '}
-                <span className="text-slate-300 dark:text-slate-600 font-normal">|</span>{' '}
+                <span className="text-slate-300 dark:text-slate-700 font-normal">|</span>{' '}
                 <span>Lecturer</span>{' '}
-                <span className="text-slate-300 dark:text-slate-600 font-normal">|</span>{' '}
+                <span className="text-slate-300 dark:text-slate-700 font-normal">|</span>{' '}
                 <span>Director of Information Management</span>
               </p>
-              <p className="text-xs sm:text-sm font-semibold text-teal-700 dark:text-teal-400">
+              <p className="text-xs sm:text-sm font-bold text-[#8c1d30] dark:text-rose-400 tracking-wide">
                 Mekelle Institute of Technology, Mekelle University
               </p>
             </div>
@@ -71,18 +71,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPrintCv }) => {
             {/* Quick Metadata */}
             <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-slate-600 dark:text-slate-400 font-medium">
               <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                <MapPin className="w-3.5 h-3.5 text-[#8c1d30] dark:text-rose-400" />
                 <span>Mekelle, Tigray, Ethiopia</span>
               </span>
               <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
               <span className="flex items-center gap-1.5">
-                <Building2 className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                <Building2 className="w-3.5 h-3.5 text-[#8c1d30] dark:text-rose-400" />
                 <span>Mekelle Institute of Technology (MIT)</span>
               </span>
               <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
               <a 
                 href={`mailto:${PERSONAL_INFO.emailPrimary}`}
-                className="hover:text-teal-600 dark:hover:text-teal-400 underline decoration-slate-300 dark:decoration-slate-700 underline-offset-2 transition-colors font-mono"
+                className="hover:text-[#8c1d30] dark:hover:text-rose-400 underline decoration-slate-300 dark:decoration-slate-700 underline-offset-2 transition-colors font-mono"
               >
                 {PERSONAL_INFO.emailPrimary}
               </a>
@@ -92,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPrintCv }) => {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
                 href="#geometratech"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-xs transition-colors active:scale-98"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#8c1d30] hover:bg-[#731526] text-white text-xs font-semibold shadow-xs transition-colors active:scale-98"
               >
                 <Zap className="w-3.5 h-3.5 fill-current" />
                 <span>Explore GeometraTech Venture</span>
