@@ -79,8 +79,12 @@ ${THESIS_SUPERVISIONS.map(t => `* ${t.title} (${t.year}) — ${t.level} Engineer
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div 
+      id="cv-modal-overlay" 
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200"
+    >
       <div 
+        id="cv-modal-wrapper"
         className="relative w-full max-w-4xl max-h-[94vh] bg-white text-slate-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
         role="dialog"
         aria-modal="true"
@@ -133,13 +137,13 @@ ${THESIS_SUPERVISIONS.map(t => `* ${t.title} (${t.year}) — ${t.level} Engineer
               className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-medium transition-colors shadow-2xs cursor-pointer"
               title="Download CV as a plain text (.txt) file directly"
             >
-              <Download className="w-3.5 h-3.5 text-teal-700" />
+              <Download className="w-3.5 h-3.5 text-slate-700" />
               <span>Download .TXT</span>
             </button>
 
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#8c1d30] hover:bg-[#731526] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Print / Save PDF</span>
@@ -156,10 +160,12 @@ ${THESIS_SUPERVISIONS.map(t => `* ${t.title} (${t.year}) — ${t.level} Engineer
         </div>
 
         {/* Printable CV Document Content */}
-        <div className="flex-1 overflow-y-auto p-6 sm:p-10 font-sans text-xs sm:text-[13px] leading-relaxed text-slate-900 space-y-6 bg-white">
-          
+        <div 
+          id="cv-printable-document" 
+          className="flex-1 overflow-y-auto p-6 sm:p-10 font-sans text-xs sm:text-[13px] leading-relaxed text-slate-900 space-y-6 bg-white"
+        >
           {/* Header */}
-          <div className="text-center pb-5 border-b-2 border-slate-900">
+          <div className="cv-section text-center pb-5 border-b-2 border-slate-900">
             <h1 className="text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-slate-950">
               {PERSONAL_INFO.name}
             </h1>

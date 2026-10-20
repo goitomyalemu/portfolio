@@ -97,23 +97,82 @@
   box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
 }
 
-/* Print stylesheet */
+/* Print stylesheet: isolates CV document to prevent browser freeze and 22-page bloat */
 @media print {
-  body {
-    background: #ffffff !important;
-    color: #1b1712 !important;
-  }
+  /* Hide the entire website behind the modal */
+  header,
+  main,
+  footer,
+  nav,
+  aside,
+  [role="progressbar"],
   .no-print {
     display: none !important;
   }
-  .print-only {
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Reset modal positioning to full flow document */
+  #cv-modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
     display: block !important;
+    overflow: visible !important;
+    height: auto !important;
+    width: 100% !important;
+    backdrop-filter: none !important;
+    animation: none !important;
   }
-  .page-break {
-    page-break-before: always;
+
+  #cv-modal-wrapper {
+    position: static !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    width: 100% !important;
   }
+
+  #cv-printable-document {
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    color: #0f172a !important;
+  }
+
+  .cv-section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
   a {
     text-decoration: none !important;
-    color: #1b1712 !important;
+    color: #0f172a !important;
+  }
+
+  @page {
+    margin: 1.5cm;
+    size: portrait;
   }
 }
+
