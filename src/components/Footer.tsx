@@ -5,6 +5,7 @@ import {
   Mail, 
   Linkedin, 
   Twitter, 
+  Github,
   ExternalLink, 
   Globe, 
   BookOpen,
@@ -58,6 +59,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrintCv }) => {
 
             {/* Quick Compact Social Links */}
             <div className="flex items-center gap-2 pt-1 text-slate-600 dark:text-slate-400">
+              <a 
+                href={PERSONAL_INFO.github}
+                target="_blank" 
+                rel="noreferrer"
+                aria-label="GitHub Profile"
+                className="p-2 rounded-lg bg-white/90 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-teal-700 border border-[#dfd6c4] dark:border-slate-700/80 transition-colors shadow-2xs"
+                title="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+
               <a 
                 href={PERSONAL_INFO.linkedin}
                 target="_blank" 
@@ -218,6 +230,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrintCv }) => {
                 </a>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 pl-5">
                   Institutional profile and academic biography
+                </p>
+              </li>
+              <li>
+                <a 
+                  href={PERSONAL_INFO.portfolioUrl} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-1.5 text-slate-800 dark:text-slate-200 hover:text-teal-800 dark:hover:text-teal-300 transition-colors font-medium"
+                >
+                  <Github className="w-3.5 h-3.5 text-teal-700 dark:text-teal-400" />
+                  <span>Personal Portfolio Repository</span>
+                  <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100" />
+                </a>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 pl-5">
+                  github.com/goitomyalemu/portfolio
                 </p>
               </li>
             </ul>

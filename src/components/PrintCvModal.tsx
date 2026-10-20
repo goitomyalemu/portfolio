@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Printer, Download, ExternalLink, Copy, Check, FileText } from 'lucide-react';
+import { X, Download, Copy, Check, FileText } from 'lucide-react';
 import { 
   PERSONAL_INFO, 
   WORK_EXPERIENCE, 
@@ -14,6 +14,7 @@ import {
   ACADEMIC_BLURBS,
   COURSES_TAUGHT
 } from '../data/portfolioData';
+import { downloadCvPdf } from '../utils/generateCvPdf';
 
 interface PrintCvModalProps {
   isOpen: boolean;
@@ -43,8 +44,8 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
 
   if (!isOpen) return null;
 
-  const handlePrint = () => {
-    window.print();
+  const handleDownloadPdf = () => {
+    downloadCvPdf();
   };
 
   const handleCopyText = (text: string, key: string) => {
@@ -58,7 +59,8 @@ export const PrintCvModal: React.FC<PrintCvModalProps> = ({ isOpen, onClose }) =
 ${PERSONAL_INFO.title}
 Institution: ${PERSONAL_INFO.institution}
 Email: ${PERSONAL_INFO.emailPrimary} | ${PERSONAL_INFO.emailInstitutional}
-WhatsApp: ${PERSONAL_INFO.whatsappHandle} | LinkedIn: ${PERSONAL_INFO.linkedin}
+WhatsApp: ${PERSONAL_INFO.whatsappHandle} | GitHub: ${PERSONAL_INFO.github} | LinkedIn: ${PERSONAL_INFO.linkedin}
+Portfolio: ${PERSONAL_INFO.portfolioUrl}
 Location: ${PERSONAL_INFO.location}
 
 === PROFESSIONAL SUMMARY ===
@@ -141,12 +143,14 @@ ${THESIS_SUPERVISIONS.map(t => `* ${t.title} (${t.year}) — ${t.level} Engineer
               <span>Download .TXT</span>
             </button>
 
+            {/* Primary Action: Direct Auto-Download PDF */}
             <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#8c1d30] hover:bg-[#731526] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+              onClick={handleDownloadPdf}
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#8c1d30] hover:bg-[#731526] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer active:scale-98"
+              title="Auto-download formatted academic CV as a standalone PDF file directly"
             >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print / Save PDF</span>
+              <Download className="w-3.5 h-3.5" />
+              <span>Download PDF</span>
             </button>
 
             <button
@@ -179,12 +183,16 @@ ${THESIS_SUPERVISIONS.map(t => `* ${t.title} (${t.year}) — ${t.level} Engineer
               <span>Mekelle, Ethiopia</span>
             </div>
             <div className="mt-1 text-xs text-slate-600 flex flex-wrap items-center justify-center gap-x-3">
-              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer" className="underline">
-                LinkedIn: {PERSONAL_INFO.name}
+              <a href={PERSONAL_INFO.github} target="_blank" rel="noreferrer" className="underline">
+                GitHub: {PERSONAL_INFO.github.replace('http://', '').replace('https://', '')}
               </a>
               <span>|</span>
-              <a href={PERSONAL_INFO.geometratechUrl} target="_blank" rel="noreferrer" className="underline">
-                geometratech.com
+              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer" className="underline">
+                LinkedIn: {PERSONAL_INFO.linkedin.replace('http://', '').replace('https://', '')}
+              </a>
+              <span>|</span>
+              <a href={PERSONAL_INFO.portfolioUrl} target="_blank" rel="noreferrer" className="underline">
+                Portfolio: github.com/goitomyalemu/portfolio
               </a>
             </div>
           </div>

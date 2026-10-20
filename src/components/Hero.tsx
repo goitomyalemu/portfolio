@@ -7,6 +7,7 @@ import {
   FileText,
   Linkedin,
   Twitter,
+  Github,
   Building2
 } from 'lucide-react';
 import { PERSONAL_INFO, ASSET_IMAGES } from '../data/portfolioData';
@@ -118,6 +119,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPrintCv }) => {
             {/* Professional Networks Row */}
             <div className="flex items-center gap-4 pt-1 text-slate-500 dark:text-slate-400">
               <span className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">NETWORKS:</span>
+              <a 
+                href={PERSONAL_INFO.github}
+                target="_blank" 
+                rel="noreferrer"
+                className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors p-1"
+                title="GitHub Profile"
+                aria-label="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
               <a 
                 href={PERSONAL_INFO.linkedin}
                 target="_blank" 

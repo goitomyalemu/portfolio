@@ -4,6 +4,7 @@ import {
   MapPin, 
   Linkedin, 
   Twitter, 
+  Github,
   Copy, 
   Check, 
   MessageSquare, 
@@ -163,6 +164,16 @@ export const ReferencesAndContact: React.FC = () => {
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>Message on WhatsApp</span>
+                </a>
+
+                <a
+                  href={PERSONAL_INFO.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-xs transition-colors flex items-center gap-2 active:scale-98"
+                >
+                  <Github className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                  <span>GitHub</span>
                 </a>
 
                 <a
