@@ -46,28 +46,37 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPrintCv }) => {
               {PERSONAL_INFO.name}
             </h1>
 
-            {/* Professional Credential & Leadership Ribbon */}
-            <div className="p-4 sm:p-5 bg-white dark:bg-slate-900/95 rounded-2xl border-l-4 border-l-[#8c1d30] border-y border-r border-slate-200 dark:border-slate-800 shadow-2xs space-y-2">
-              <p className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">
-                <span>Founder, GeometraTech</span>{' '}
-                <span className="text-slate-300 dark:text-slate-700 font-normal">|</span>{' '}
-                <span>Licensed Professional Electrical Engineer</span>{' '}
-                <span className="text-slate-300 dark:text-slate-700 font-normal">|</span>{' '}
-                <span>Lecturer</span>{' '}
-                <span className="text-slate-300 dark:text-slate-700 font-normal">|</span>{' '}
-                <span>Director of Information Management</span>
+            {/* Bio Paragraphs */}
+            <div className="space-y-4 max-w-2xl text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+              <p className="font-semibold text-slate-900 dark:text-slate-100 text-lg sm:text-xl leading-snug border-l-4 border-[#8c1d30] pl-4 py-1">
+                Licensed Electrical Engineer building intelligent, secure, and energy-efficient systems for communities with limited access to energy and technology.
               </p>
-              <p className="text-xs sm:text-sm font-bold text-[#8c1d30] dark:text-rose-400 tracking-wide">
-                Mekelle Institute of Technology, Mekelle University
+              <p>
+                My expertise spans embedded systems, FPGAs, wireless communication, IoT, edge AI, and hardware security. With over 14 years of teaching and mentoring, I&apos;ve supervised engineering research from concept to working hardware.
+              </p>
+              <p>
+                I lead institution-wide data systems and digital transformation as Director of Information Management at Mekelle University, and deliver practical solar, embedded, and ICT solutions across Ethiopia as founder of GeometraTech.
               </p>
             </div>
 
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-              Professional Electrical Engineer with over 14 years bridging reconfigurable computing (FPGAs), 
-              software-defined radio (SDR), and edge deep learning with renewable energy microgrids. 
-              Currently driving institutional digital transformation, enterprise data validation, and 
-              last-mile solar infrastructure across displaced communities in Tigray.
-            </p>
+            {/* Research Interests & Open to Collaboration Ribbon */}
+            <div className="p-3.5 sm:p-4 rounded-xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-2 max-w-2xl">
+              <div className="flex flex-wrap items-baseline gap-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                <span className="font-bold text-[#8c1d30] dark:text-rose-400">Research interests:</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">Intelligent &amp; Secure Embedded Systems</span>
+                <span className="text-slate-300 dark:text-slate-700">·</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">Wireless Sensing &amp; IoT</span>
+                <span className="text-slate-300 dark:text-slate-700">·</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">Digital Transformation &amp; Renewable Energy</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400 pt-0.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>Open to research collaboration and partnerships.</span>
+              </div>
+            </div>
 
             {/* Quick Metadata */}
             <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-slate-600 dark:text-slate-400 font-medium">

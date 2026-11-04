@@ -78,10 +78,20 @@ export const PERSONAL_INFO = {
   geometratechUrl: "https://geometratech.com/",
   thranUrl: "https://thran.org.et/",
   googleSitesUrl: "https://sites.google.com/mu.edu.et/goitomyisfaalemu/bio?authuser=2",
-  bioHeadline: "Electrical Engineer bridging embedded hardware, edge AI, and renewable microgrids to power underserved communities and transform institutional data governance.",
-  fullBio: `I am a Licensed Professional Electrical Engineer and Lecturer at the Mekelle Institute of Technology (MIT), currently serving as the Director of Information Management at Mekelle University. I am also the founder of GeometraTech, an engineering venture based in Mekelle that designs, installs, and services off-grid solar charging infrastructure and intelligent IoT monitoring for last-mile communities.
+  bioHeadline: "Licensed Electrical Engineer building intelligent, secure, and energy-efficient systems for communities with limited access to energy and technology.",
+  fullBio: `Licensed Electrical Engineer building intelligent, secure, and energy-efficient systems for communities with limited access to energy and technology.
 
-My engineering background spans Reconfigurable Computing (FPGAs), Embedded Systems, Software-Defined Radio (SDR), and Edge Deep Learning. At Mekelle University, I spearhead data integrity and institutional digital transformation, integrating IMS, ERP, and national HEMIS platforms. Concurrently, my research and development initiatives focus on resilient AI-driven healthcare diagnostics and distributed solar electrification across displaced and rural populations in Tigray and greater Ethiopia.`
+My expertise spans embedded systems, FPGAs, wireless communication, IoT, edge AI, and hardware security. With over 14 years of teaching and mentoring, I've supervised engineering research from concept to working hardware.
+
+I lead institution-wide data systems and digital transformation as Director of Information Management at Mekelle University, and deliver practical solar, embedded, and ICT solutions across Ethiopia as founder of GeometraTech.
+
+Research interests: Intelligent & Secure Embedded Systems · Wireless Sensing & IoT · Digital Transformation & Renewable Energy. Open to research collaboration and partnerships.`,
+  researchInterests: [
+    "Intelligent & Secure Embedded Systems",
+    "Wireless Sensing & IoT",
+    "Digital Transformation & Renewable Energy",
+  ],
+  collaborationNotice: "Open to research collaboration and partnerships.",
 };
 
 export const IMPACT_METRICS = [

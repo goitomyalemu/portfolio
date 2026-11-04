@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrintCv }) => {
               </li>
               <li>
                 <a href="#theses" className="hover:text-teal-800 dark:hover:text-teal-300 transition-colors text-slate-700 dark:text-slate-300">
-                  MSc Thesis Supervisions
+                  Thesis Supervisions (BSc)
                 </a>
               </li>
               <li>
